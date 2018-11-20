@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.gov.sp.fatec</groupId>
-    <artifactId>entrega4</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>PropCar</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>entrega4</name>

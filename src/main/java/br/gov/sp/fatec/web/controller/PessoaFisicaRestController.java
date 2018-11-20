@@ -30,9 +30,9 @@ public class PessoaFisicaRestController {
         try {
             pessoaFisica = this.pessoaFisicaService.salvar(pessoaFisica);
         } catch (Exception e) {
-            return new ResponseEntity<PessoaFisica>(HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
-        return new ResponseEntity<PessoaFisica>(pessoaFisica, HttpStatus.CREATED);
+        return new ResponseEntity<>(pessoaFisica, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
@@ -40,9 +40,9 @@ public class PessoaFisicaRestController {
     public ResponseEntity<Collection<PessoaFisica>> buscarPorId(@PathVariable("id") Long id) {
         Collection<PessoaFisica> pessoaFisicas = this.pessoaFisicaService.buscarPorId(id);
         if (!pessoaFisicas.isEmpty()) {
-            return new ResponseEntity<Collection<PessoaFisica>>(pessoaFisicas, HttpStatus.OK);
+            return new ResponseEntity<>(pessoaFisicas, HttpStatus.OK);
         }
-        return new ResponseEntity<Collection<PessoaFisica>>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/getWithParams/", method = RequestMethod.POST)
@@ -50,8 +50,8 @@ public class PessoaFisicaRestController {
     public ResponseEntity<Collection<PessoaFisica>> buscarComParametros(@RequestBody JsonBusca jsonBusca) {
         Collection<PessoaFisica> pessoaFisicas = this.pessoaFisicaService.buscarComJsonBusca(jsonBusca);
         if (!pessoaFisicas.isEmpty()) {
-            return new ResponseEntity<Collection<PessoaFisica>>(pessoaFisicas, HttpStatus.OK);
+            return new ResponseEntity<>(pessoaFisicas, HttpStatus.OK);
         }
-        return new ResponseEntity<Collection<PessoaFisica>>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

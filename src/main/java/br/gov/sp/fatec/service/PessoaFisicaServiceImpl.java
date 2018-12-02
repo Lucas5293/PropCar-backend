@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.springframework.util.StringUtils.isEmpty;
 
 @Component
 public class PessoaFisicaServiceImpl implements PessoaFisicaService {
@@ -22,7 +23,6 @@ public class PessoaFisicaServiceImpl implements PessoaFisicaService {
 
     @Override
     public PessoaFisica salvar(PessoaFisica pessoaFisica) {
-        this.automovelRepository.saveAll(pessoaFisica.getAutomoveis());
         return this.pessoaFisicaRepository.save(pessoaFisica);
     }
 
@@ -39,6 +39,9 @@ public class PessoaFisicaServiceImpl implements PessoaFisicaService {
     public Collection<PessoaFisica> buscarComJsonBusca(JsonBusca jsonBusca) {
         String nome = (jsonBusca != null && jsonBusca.getNome() != null) ? jsonBusca.getNome() : "";
         String cpf = (jsonBusca != null && jsonBusca.getCpf() != null) ? jsonBusca.getCpf() : "";
+        if (isEmpty(nome) && isEmpty(cpf)) {
+            return (Collection<PessoaFisica>) this.pessoaFisicaRepository.findAll();
+        }
         return this.pessoaFisicaRepository.buscarPorNomeOuCPF(nome, cpf);
     }
 }

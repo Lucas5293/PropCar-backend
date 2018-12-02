@@ -1,6 +1,7 @@
 package br.gov.sp.fatec.repository;
 
 import br.gov.sp.fatec.modelo.Automovel;
+import br.gov.sp.fatec.modelo.PessoaFisica;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -16,5 +17,7 @@ public interface AutomovelRepository extends CrudRepository<Automovel, Long> {
 	List<Automovel> buscarPorModeloECor(String nome, String cor);
 
 	List<Automovel> findByCor(String cor);
+
+	List<Automovel> findByPessoaFisica(PessoaFisica pessoaFisica);
 
 }

@@ -13,18 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/pessoa")
+@CrossOrigin
 public class PessoaFisicaRestController {
 
     @Autowired
     private PessoaFisicaService pessoaFisicaService;
 
-    @RequestMapping(value = "/")
-    public String hello() {
-        return "Olá";
-    }
-
-    @RequestMapping(value = "/salvar", method = RequestMethod.POST)
+    @RequestMapping(value = "/pessoas", method = RequestMethod.POST)
     @JsonView(View.PessoaComAutomovel.class)
     public ResponseEntity<PessoaFisica>  save(@RequestBody PessoaFisica pessoaFisica){
         try {
@@ -35,23 +30,10 @@ public class PessoaFisicaRestController {
         return new ResponseEntity<>(pessoaFisica, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    @JsonView(View.PessoaSemId.class)
-    public ResponseEntity<Collection<PessoaFisica>> buscarPorId(@PathVariable("id") Long id) {
-        Collection<PessoaFisica> pessoaFisicas = this.pessoaFisicaService.buscarPorId(id);
-        if (!pessoaFisicas.isEmpty()) {
-            return new ResponseEntity<>(pessoaFisicas, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @RequestMapping(value = "/getWithParams/", method = RequestMethod.POST)
+    @RequestMapping(value = "/pessoas", method = RequestMethod.GET)
     @JsonView(View.PessoaComId.class)
-    public ResponseEntity<Collection<PessoaFisica>> buscarComParametros(@RequestBody JsonBusca jsonBusca) {
-        Collection<PessoaFisica> pessoaFisicas = this.pessoaFisicaService.buscarComJsonBusca(jsonBusca);
-        if (!pessoaFisicas.isEmpty()) {
-            return new ResponseEntity<>(pessoaFisicas, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Collection<PessoaFisica>> buscar() {
+        Collection<PessoaFisica> pessoaFisicas = this.pessoaFisicaService.buscarComJsonBusca(new JsonBusca());
+        return new ResponseEntity<>(pessoaFisicas, HttpStatus.OK);
     }
 }

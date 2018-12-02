@@ -16,6 +16,4 @@ public interface PessoaFisicaRepository extends CrudRepository<PessoaFisica, Lon
 	@Query(queryBuscarPorNomeOuCpf)
 	List<PessoaFisica> buscarPorNomeOuCPF(String nome, String cpf);
 
-	PessoaFisica findByAutomoveis(Automovel automovel);
-
 }

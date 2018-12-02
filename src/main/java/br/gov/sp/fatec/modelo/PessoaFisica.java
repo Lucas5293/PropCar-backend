@@ -39,14 +39,6 @@ public class PessoaFisica {
 	@JsonView(View.PessoaSemId.class)
 	private String telefone;
 
-	@OneToMany
-	@JoinTable(name = "PE_AUTOMOVELPESSOA",
-			joinColumns = { @JoinColumn(name = "PSF_ID") },
-			inverseJoinColumns = { @JoinColumn(name = "AUT_ID") })
-	@JsonView(View.PessoaComAutomovel.class)
-	@XmlElement(name = "automoveis")
-	private List<Automovel> automoveis;
-
 	public Long getId() {
 		return id;
 	}
@@ -87,12 +79,5 @@ public class PessoaFisica {
 		this.telefone = telefone;
 	}
 
-	public List<Automovel> getAutomoveis() {
-		return automoveis;
-	}
-
-	public void setAutomoveis(List<Automovel> automoveis) {
-		this.automoveis = automoveis;
-	}
 }
 

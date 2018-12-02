@@ -8,33 +8,20 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Table(name="OBJ_AUTOMOVEL")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Automovel {
+public class AutomovelJson {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "AUT_ID")
 	@JsonView(View.PessoaComAutomovel.class)
 	private Long id;
-
-	@Column(name = "AUT_MODELO")
 	@JsonView(View.PessoaComAutomovel.class)
 	private String modelo;
-
-	@Column(name = "AUT_COR")
 	@JsonView(View.PessoaComAutomovel.class)
 	private String cor;
-
-	@Column(name = "AUT_RENAVAM")
 	@JsonView(View.PessoaComAutomovel.class)
 	private String renavam;
-
-	@ManyToOne
-	@JoinColumn(name = "AUT_PESSOA")
-	private PessoaFisica pessoaFisica;
+	@JsonView(View.PessoaComAutomovel.class)
+	private Long pessoaFisica;
 
 	public Long getId() {
 		return id;
@@ -68,11 +55,11 @@ public class Automovel {
 		this.renavam = renavam;
 	}
 
-	public PessoaFisica getPessoaFisica() {
+	public Long getPessoaFisica() {
 		return pessoaFisica;
 	}
 
-	public void setPessoaFisica(PessoaFisica pessoaFisica) {
+	public void setPessoaFisica(Long pessoaFisica) {
 		this.pessoaFisica = pessoaFisica;
 	}
 }

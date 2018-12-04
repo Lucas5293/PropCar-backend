@@ -5,7 +5,6 @@ import br.gov.sp.fatec.modelo.AutomovelJson;
 import br.gov.sp.fatec.modelo.PessoaFisica;
 import br.gov.sp.fatec.repository.AutomovelRepository;
 import br.gov.sp.fatec.repository.PessoaFisicaRepository;
-import br.gov.sp.fatec.web.service.AutomovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

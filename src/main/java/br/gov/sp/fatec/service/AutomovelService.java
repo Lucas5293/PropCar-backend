@@ -1,4 +1,4 @@
-package br.gov.sp.fatec.web.service;
+package br.gov.sp.fatec.service;
 
 import br.gov.sp.fatec.modelo.Automovel;
 import br.gov.sp.fatec.modelo.AutomovelJson;

@@ -27,6 +27,7 @@ public class Usuario implements UserDetails {
             joinColumns = { @JoinColumn(name = "USER_ID") },
             inverseJoinColumns = { @JoinColumn(name = "AT_ID") })
     private List<Autorizacao> autorizacoes;
+    private Boolean enabled;
 
     public Long getId() {
         return id;

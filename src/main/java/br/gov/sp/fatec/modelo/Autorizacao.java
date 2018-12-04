@@ -16,6 +16,9 @@ public class Autorizacao implements GrantedAuthority {
     @Column(name = "AT_NOME")
     private String nome;
 
+    // Desserialization bug
+    private String authority;
+
     public Long getId() {
         return id;
     }

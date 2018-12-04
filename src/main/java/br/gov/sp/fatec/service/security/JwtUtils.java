@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -35,7 +36,8 @@ public class JwtUtils {
                 .parseClaimsJws(token)
                 .getBody()
                 .get("userDetails", String.class);
-        return mapper.readValue(credentialsJson, Usuario.class);
+        return new Gson().fromJson(credentialsJson, Usuario.class);
+        //return mapper.readValue(credentialsJson, Usuario.class);
     }
 
 }

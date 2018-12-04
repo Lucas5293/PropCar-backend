@@ -4,7 +4,7 @@ import br.gov.sp.fatec.modelo.Automovel;
 import br.gov.sp.fatec.modelo.AutomovelJson;
 import br.gov.sp.fatec.modelo.PessoaFisica;
 import br.gov.sp.fatec.service.PessoaFisicaService;
-import br.gov.sp.fatec.web.service.AutomovelService;
+import br.gov.sp.fatec.service.AutomovelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated() && hasRole('ADMIN')")
+@PreAuthorize("isAuthenticated() and hasAuthority('ADMIN')")
 public class AutomovelRestController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class AutomovelRestController {
             pessoaFisica = result.isEmpty() ? null : result.iterator().next();
         }
         List<AutomovelJson> busca = this.automovelService.buscar(pessoaFisica, disponiveis);
-        return new ResponseEntity<>(busca, HttpStatus.CREATED);
+        return new ResponseEntity<>(busca, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/automovel", method = RequestMethod.POST)

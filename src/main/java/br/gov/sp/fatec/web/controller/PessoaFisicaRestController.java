@@ -15,7 +15,7 @@ import java.util.Collection;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated() && (hasRole('ADMIN') || hasRole('CADASTRO_PESSOA'))")
+@PreAuthorize("isAuthenticated() and (hasAuthority('ADMIN') or hasAuthority('CADASTRO_PESSOA'))")
 public class PessoaFisicaRestController {
 
     @Autowired
